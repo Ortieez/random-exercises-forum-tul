@@ -1,6 +1,6 @@
+import { betterFetch } from "@better-fetch/fetch";
 import { type NextRequest, NextResponse } from "next/server";
 import type { auth } from "./app/lib/auth";
-import { betterFetch } from "@better-fetch/fetch";
 
 type Session = typeof auth.$Infer.Session;
 const PUBLIC_FILE = /\.(.*)$/;
