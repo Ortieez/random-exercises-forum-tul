@@ -1,19 +1,21 @@
 import { auth } from "@/app/lib/auth";
-import { LoginSchema } from "@/app/lib/types/client";
+import { SignUpSchema } from "@/app/lib/types/client";
 import { parse } from "valibot";
 
-export const SignIn = async () => {
-	async function login(formData: FormData) {
+export const SignUp = async () => {
+	async function signUp(formData: FormData) {
 		"use server";
 		try {
-			const { email, password } = parse(
-				LoginSchema,
+			const { email, password, name } = parse(
+				SignUpSchema,
 				Object.fromEntries(formData.entries()),
 			);
-			await auth.api.signInEmail({
+
+			await auth.api.signUpEmail({
 				body: {
 					email,
 					password,
+					name,
 				},
 			});
 		} catch (error) {
@@ -23,7 +25,8 @@ export const SignIn = async () => {
 
 	return (
 		<>
-			<form action={login}>
+			<form action={signUp}>
+				<input name="name" type="text" required />
 				<input name="email" type="email" required />
 				<input name="password" type="password" required minLength={8} />
 				<button type="submit">Login</button>

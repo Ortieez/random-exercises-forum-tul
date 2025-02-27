@@ -16,9 +16,9 @@ export const roles = pgEnum("roles", ["admin", "user"]);
 // Tables
 export const users = pgTable("users", {
 	id: text("id").primaryKey(),
-	username: varchar({ length: 255 }).notNull(),
-	name: varchar({ length: 255 }),
-	surname: varchar({ length: 255 }),
+	name: varchar({ length: 255 }).notNull(),
+	firstname: varchar({ length: 255 }).default(""),
+	surname: varchar({ length: 255 }).default(""),
 	email: varchar({ length: 255 }).notNull().unique(),
 	emailVerified: boolean("email_verified").notNull(),
 	role: roles().notNull().default("user"),
@@ -32,6 +32,8 @@ export const sessions = pgTable("sessions", {
 	token: text("token").notNull().unique(),
 	createdAt: timestamp("created_at").notNull(),
 	updatedAt: timestamp("updated_at").notNull(),
+	ipAddress: text("ip_address"),
+	userAgent: text("user_agent"),
 	userId: text("user_id")
 		.notNull()
 		.references(() => users.id, { onDelete: "cascade" }),
@@ -195,3 +197,24 @@ export const problemsToTagsRelations = relations(problemsToTags, ({ one }) => ({
 		references: [tags.id],
 	}),
 }));
+
+export const schema = {
+	roles,
+	users,
+	sessions,
+	accounts,
+	verifications,
+	subjects,
+	problems,
+	topics,
+	tags,
+	usersToSubjects,
+	problemsToTags,
+	usersRelations,
+	subjectsRelations,
+	usersToSubjectsRelations,
+	problemsRelations,
+	topicsRelations,
+	tagsRelations,
+	problemsToTagsRelations,
+};
