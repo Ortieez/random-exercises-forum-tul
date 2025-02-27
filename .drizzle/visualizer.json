@@ -1,1 +1,5 @@
-[{"id":"subjects","position":{"x":60,"y":140}},{"id":"users","position":{"x":930,"y":50}},{"id":"users_to_subjects","position":{"x":490,"y":70}}]
+[
+	{ "id": "subjects", "position": { "x": 60, "y": 140 } },
+	{ "id": "users", "position": { "x": 930, "y": 50 } },
+	{ "id": "users_to_subjects", "position": { "x": 490, "y": 70 } }
+]
