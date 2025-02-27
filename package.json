@@ -10,6 +10,7 @@
 		"prepare": "husky"
 	},
 	"dependencies": {
+		"@better-fetch/fetch": "^1.1.15",
 		"@types/katex": "^0.16.7",
 		"better-auth": "^1.1.21",
 		"dotenv": "^16.4.7",
