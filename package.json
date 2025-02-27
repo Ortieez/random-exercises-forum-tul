@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@types/katex": "^0.16.7",
+    "better-auth": "^1.1.21",
     "dotenv": "^16.4.7",
     "drizzle-orm": "^0.39.3",
     "katex": "^0.16.21",
