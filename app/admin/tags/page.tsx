@@ -1,15 +1,18 @@
-import { getAllTags } from "@/app/actions/tags/get-all-tags"
+import { getAllTags } from "@/app/actions/tags/get-all";
 
 const AdminTagsPage = async () => {
-    const tags = await getAllTags();
+	const tags = await getAllTags();
 
-    console.log(tags);
-
-    return (
-        <div>
-            asd
-        </div>
-    )
-}
+	return (
+		<div>
+			<h1>Tags</h1>
+			<ul>
+				{tags.map((tag) => (
+					<li key={tag.id}>{tag.name}</li>
+				))}
+			</ul>
+		</div>
+	);
+};
 
 export default AdminTagsPage;
