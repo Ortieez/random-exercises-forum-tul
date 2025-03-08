@@ -16,6 +16,7 @@ export default async function Home() {
 	return (
 		<div>
 			<KatexSpan text={"$$c = \\pm\\sqrt{a^2 + b^2}$$"} />
+			<KatexSpan text={"$$c = c^2+3x+\\pi$$"} />
 			<SignIn />
 			<SignUp />
 			{session ? (

@@ -1,12 +1,16 @@
 import * as v from "valibot";
 
 export const LoginSchema = v.object({
-	email: v.pipe(v.string(), v.email()),
-	password: v.pipe(v.string(), v.minLength(8)),
+  email: v.pipe(v.string(), v.email()),
+  password: v.pipe(v.string(), v.minLength(8)),
 });
 
 export const SignUpSchema = v.object({
-	email: v.pipe(v.string(), v.email()),
-	password: v.pipe(v.string(), v.minLength(8)),
-	name: v.string(),
+  email: v.pipe(v.string(), v.email()),
+  password: v.pipe(v.string(), v.minLength(8)),
+  name: v.string(),
+});
+
+export const TagSchema = v.object({
+  name: v.string(),
 });
