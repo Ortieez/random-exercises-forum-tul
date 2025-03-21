@@ -32,7 +32,12 @@ export default async function AdminSubjectsEditPage({
 			<h1>Edit Subject</h1>
 			<form action={onSubmitAction}>
 				<label htmlFor="name">Name</label>
-				<input type="text" id="name" name="name" defaultValue={subject[0].name} />
+				<input
+					type="text"
+					id="name"
+					name="name"
+					defaultValue={subject[0].name}
+				/>
 				<label htmlFor="description">Description</label>
 				<input
 					type="text"
@@ -50,4 +55,4 @@ export const metadata = {
 	title: "Edit Subject",
 };
 
-export const revalidate = 0; 
+export const revalidate = 0;

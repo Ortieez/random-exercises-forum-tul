@@ -9,4 +9,4 @@ export async function getAllSubjects() {
 		console.error("Error getting subjects:", error);
 		throw error;
 	}
-} 
+}

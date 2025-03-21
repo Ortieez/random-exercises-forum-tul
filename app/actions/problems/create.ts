@@ -31,4 +31,4 @@ export async function createProblem(
 		console.error("Error creating problem:", error);
 		throw error;
 	}
-} 
+}

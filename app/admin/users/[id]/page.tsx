@@ -22,7 +22,7 @@ export default async function AdminUsersEditPage({
 				id: params.id,
 				name,
 				email,
-				role: role as 'user' | 'admin',
+				role: role as "user" | "admin",
 			});
 		} catch (error) {
 			console.error(error);
@@ -38,7 +38,12 @@ export default async function AdminUsersEditPage({
 				<label htmlFor="name">Name</label>
 				<input type="text" id="name" name="name" defaultValue={user[0].name} />
 				<label htmlFor="email">Email</label>
-				<input type="email" id="email" name="email" defaultValue={user[0].email} />
+				<input
+					type="email"
+					id="email"
+					name="email"
+					defaultValue={user[0].email}
+				/>
 				<label htmlFor="role">Role</label>
 				<select id="role" name="role" defaultValue={user[0].role}>
 					<option value="user">User</option>
@@ -54,4 +59,4 @@ export const metadata = {
 	title: "Edit User",
 };
 
-export const revalidate = 0; 
+export const revalidate = 0;

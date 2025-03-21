@@ -9,4 +9,4 @@ export async function deleteProblem(id: number) {
 		console.error("Error deleting problem:", error);
 		throw error;
 	}
-} 
+}

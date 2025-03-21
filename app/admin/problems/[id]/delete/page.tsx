@@ -33,4 +33,4 @@ export const metadata = {
 	title: "Delete Problem",
 };
 
-export const revalidate = 0; 
+export const revalidate = 0;

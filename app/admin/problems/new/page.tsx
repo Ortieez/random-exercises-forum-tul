@@ -1,7 +1,7 @@
 import { createProblem } from "@/app/actions/problems/create";
 import { getAllSubjects } from "@/app/actions/subjects/get-all";
-import { getAllTopics } from "@/app/actions/topics/get-all";
 import { getAllTags } from "@/app/actions/tags/get-all";
+import { getAllTopics } from "@/app/actions/topics/get-all";
 import { ProblemSchema } from "@/app/lib/types/client";
 import { redirect } from "next/navigation";
 import { parse } from "valibot";
@@ -16,7 +16,7 @@ export default async function AdminProblemsNewPage() {
 		try {
 			const selectedTags = formData.getAll("tags");
 			const rawData = Object.fromEntries(formData.entries());
-			
+
 			const validatedData = parse(ProblemSchema, {
 				name: rawData.name,
 				problem: rawData.problem,
@@ -80,13 +80,30 @@ export default async function AdminProblemsNewPage() {
 					))}
 				</select>
 				<label htmlFor="is_active">Active</label>
-				<input type="checkbox" id="is_active" name="is_active" value="true" defaultChecked />
+				<input
+					type="checkbox"
+					id="is_active"
+					name="is_active"
+					value="true"
+					defaultChecked
+				/>
 				<label htmlFor="solution">Solution</label>
 				<textarea id="solution" name="solution" />
 				<label htmlFor="solution_is_present">Solution Present</label>
-				<input type="checkbox" id="solution_is_present" name="solution_is_present" value="true" defaultChecked />
+				<input
+					type="checkbox"
+					id="solution_is_present"
+					name="solution_is_present"
+					value="true"
+					defaultChecked
+				/>
 				<label htmlFor="solution_is_verified">Solution Verified</label>
-				<input type="checkbox" id="solution_is_verified" name="solution_is_verified" value="true" />
+				<input
+					type="checkbox"
+					id="solution_is_verified"
+					name="solution_is_verified"
+					value="true"
+				/>
 				<button type="submit">Create Problem</button>
 			</form>
 		</div>
@@ -97,4 +114,4 @@ export const metadata = {
 	title: "Add Problem",
 };
 
-export const revalidate = 0; 
+export const revalidate = 0;

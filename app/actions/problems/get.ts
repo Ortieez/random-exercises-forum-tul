@@ -4,13 +4,10 @@ import { eq } from "drizzle-orm";
 
 export async function getProblem(id: number) {
 	try {
-		const problem = await db
-			.select()
-			.from(problems)
-			.where(eq(problems.id, id));
+		const problem = await db.select().from(problems).where(eq(problems.id, id));
 		return problem;
 	} catch (error) {
 		console.error("Error getting problem:", error);
 		throw error;
 	}
-} 
+}

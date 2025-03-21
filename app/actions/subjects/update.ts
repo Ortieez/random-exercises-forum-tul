@@ -15,12 +15,9 @@ export async function updateSubject({
 }) {
 	try {
 		const validatedData = parse(SubjectSchema, { name, description });
-		await db
-			.update(subjects)
-			.set(validatedData)
-			.where(eq(subjects.id, id));
+		await db.update(subjects).set(validatedData).where(eq(subjects.id, id));
 	} catch (error) {
 		console.error("Error updating subject:", error);
 		throw error;
 	}
-} 
+}

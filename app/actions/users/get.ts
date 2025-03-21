@@ -6,10 +6,7 @@ import { eq } from "drizzle-orm";
 
 export async function getUser(id: string) {
 	try {
-		const user = await db
-			.select()
-			.from(users)
-			.where(eq(users.id, id));
+		const user = await db.select().from(users).where(eq(users.id, id));
 		return user;
 	} catch (error) {
 		console.error("Error getting user:", error);

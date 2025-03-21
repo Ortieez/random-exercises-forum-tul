@@ -11,4 +11,4 @@ export async function createSubject(name: string, description: string) {
 		console.error("Error creating subject:", error);
 		throw error;
 	}
-} 
+}

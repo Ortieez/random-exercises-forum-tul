@@ -9,4 +9,4 @@ export async function deleteSubject(id: number) {
 		console.error("Error deleting subject:", error);
 		throw error;
 	}
-} 
+}

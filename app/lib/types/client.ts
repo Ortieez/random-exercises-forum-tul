@@ -26,14 +26,14 @@ export const SubjectSchema = v.object({
 });
 
 enum DifficultyEnum {
-	Easy = 'easy',
-	Medium = 'medium',
-	Hard = 'hard',
+	Easy = "easy",
+	Medium = "medium",
+	Hard = "hard",
 }
 
 enum RoleEnum {
-	User = 'user',
-	Admin = 'admin',
+	User = "user",
+	Admin = "admin",
 }
 
 export const ProblemSchema = v.object({

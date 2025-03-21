@@ -39,12 +39,9 @@ export async function updateProblem({
 			solution_is_present,
 			solution_is_verified,
 		});
-		await db
-			.update(problems)
-			.set(validatedData)
-			.where(eq(problems.id, id));
+		await db.update(problems).set(validatedData).where(eq(problems.id, id));
 	} catch (error) {
 		console.error("Error updating problem:", error);
 		throw error;
 	}
-} 
+}

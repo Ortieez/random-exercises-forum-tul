@@ -9,4 +9,4 @@ export async function getAllProblems() {
 		console.error("Error getting problems:", error);
 		throw error;
 	}
-} 
+}

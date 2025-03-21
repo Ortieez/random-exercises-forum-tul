@@ -15,7 +15,7 @@ export async function updateUser({
 	id: string;
 	name: string;
 	email: string;
-	role: 'user' | 'admin';
+	role: "user" | "admin";
 }) {
 	try {
 		const validatedData = parse(UserSchema, {
@@ -23,10 +23,7 @@ export async function updateUser({
 			email,
 			role,
 		});
-		await db
-			.update(users)
-			.set(validatedData)
-			.where(eq(users.id, id));
+		await db.update(users).set(validatedData).where(eq(users.id, id));
 	} catch (error) {
 		console.error("Error updating user:", error);
 		throw error;
