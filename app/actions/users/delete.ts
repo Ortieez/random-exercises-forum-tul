@@ -4,11 +4,11 @@ import { db } from "@/app/lib/db/drizzle";
 import { users } from "@/app/lib/db/schema";
 import { eq } from "drizzle-orm";
 
-export const deleteUser = async (userId: string): Promise<boolean> => {
+export async function deleteUser(id: string) {
 	try {
-		await db.delete(users).where(eq(users.id, userId));
-		return true;
+		await db.delete(users).where(eq(users.id, id));
 	} catch (error) {
-		return false;
+		console.error("Error deleting user:", error);
+		throw error;
 	}
-};
+}

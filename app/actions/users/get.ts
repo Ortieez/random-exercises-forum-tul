@@ -2,9 +2,17 @@
 
 import { db } from "@/app/lib/db/drizzle";
 import { users } from "@/app/lib/db/schema";
-import type { User } from "@/app/lib/types/server";
 import { eq } from "drizzle-orm";
 
-export const getUser = async (userId: string): Promise<User[]> => {
-	return await db.select().from(users).where(eq(users.id, userId));
-};
+export async function getUser(id: string) {
+	try {
+		const user = await db
+			.select()
+			.from(users)
+			.where(eq(users.id, id));
+		return user;
+	} catch (error) {
+		console.error("Error getting user:", error);
+		throw error;
+	}
+}

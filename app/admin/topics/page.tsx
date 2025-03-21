@@ -1,28 +1,24 @@
+import { getAllTopics } from "@/app/actions/topics/get-all";
 import Link from "next/link";
 
-const AdminPage = () => {
+const AdminTopicsPage = async () => {
+	const topics = await getAllTopics();
+
 	return (
 		<div>
-			<h1>Problems list</h1>
-			<div className="container mx-auto">
-				<Link href="/admin/problems">
-					<p className="text-blue-500">Problems</p>
-				</Link>
-				<Link href="/admin/subjects">
-					<p className="text-blue-500">Subjects</p>
-				</Link>
-				<Link href="/admin/users">
-					<p className="text-blue-500">Users</p>
-				</Link>
-				<Link href="/admin/topics">
-					<p className="text-blue-500">Topics</p>
-				</Link>
-				<Link href="/admin/tags">
-					<p className="text-blue-500">Tags</p>
-				</Link>
-			</div>
+			<h1>Topics</h1>
+			<Link href="/admin/topics/new">Add Topic</Link>
+			<ul>
+				{topics.map((topic) => (
+					<li key={topic.id}>
+						<Link href={`/admin/topics/${topic.id}`}>{topic.name}</Link>
+						<br />
+						<Link href={`/admin/topics/${topic.id}/delete`}>Delete</Link>
+					</li>
+				))}
+			</ul>
 		</div>
 	);
 };
 
-export default AdminPage;
+export default AdminTopicsPage;

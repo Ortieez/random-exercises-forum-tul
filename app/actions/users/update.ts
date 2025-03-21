@@ -1,27 +1,34 @@
 "use server";
 
 import { db } from "@/app/lib/db/drizzle";
-import { topics, users } from "@/app/lib/db/schema";
-import type { User } from "@/app/lib/types/server";
+import { users } from "@/app/lib/db/schema";
+import { UserSchema } from "@/app/lib/types/client";
 import { eq } from "drizzle-orm";
+import { parse } from "valibot";
 
-export const updateTopic = async ({
-	name,
-	surname,
-	firstname,
-	role,
-	email,
+export async function updateUser({
 	id,
-}: User): Promise<Partial<User[]>> => {
-	return await db
-		.update(users)
-		.set({
+	name,
+	email,
+	role,
+}: {
+	id: string;
+	name: string;
+	email: string;
+	role: 'user' | 'admin';
+}) {
+	try {
+		const validatedData = parse(UserSchema, {
 			name,
-			surname,
-			firstname,
-			role,
 			email,
-		})
-		.where(eq(users.id, id))
-		.returning();
-};
+			role,
+		});
+		await db
+			.update(users)
+			.set(validatedData)
+			.where(eq(users.id, id));
+	} catch (error) {
+		console.error("Error updating user:", error);
+		throw error;
+	}
+}
